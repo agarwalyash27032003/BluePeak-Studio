@@ -12,39 +12,38 @@ const Services = () => {
 
         <div className="flex mb-5">
             <h1 className="text-5xl font-bold">Websites That Perform!</h1>
-            <h3 className="text-xl font-bold">Our AI-driven automation eliminates busywork, streamlines your operations, and helps your business grow, without extra effort.</h3>
+            <h3 className="text-xl font-bold">We design engaging experiences and build websites that deliver real results.</h3>
         </div>
       
       <div className="grid grid-cols-3 gap-6 items-stretch">
 
         <div className="col-span-2 bg-[url('https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/top-view-unrecognizable-hacker-performing-cyberattack-night%20(1).jpg')] bg-cover bg-center">
           <Card
-            title="Workflow Automation"
-            description="Let AI handle repetitive tasks, so your team can focus on high-impact work."
+            title="Website Development"
+            description="Custom, responsive, and high-performance websites built using modern technologies like React and modern frameworks."
           />
         </div>
 
         <div>
           <Card
-            title="AI Chatbots"
-            description="Enhance customer experience with AI-powered assistants."
+            title="UI/UX Design"
+            description="Designing intuitive and visually appealing interfaces that improve user engagement and conversion rates."
           />
         </div>
 
-
         <Card
-          title="AI Marketing"
-          description="Send smarter messages at the right moment with AI."
+          title="Website Maintenance and Support"
+          description="Ongoing updates, security patches, bug fixes, and improvements to keep websites running smoothly"
         />
 
         <Card
-          title="CRM Automation"
-          description="Capture, qualify, and route leads automatically."
+          title="E-Commerce Development"
+          description="Design and develop modern e-commerce platforms that convert visitors into customers and scale with your business."
         />
 
         <Card
-          title="Analytics Automation"
-          description="Turn business data into actionable insights."
+          title="Landing Page Development"
+          description="Create focused landing pages optimized for conversions, performance, and seamless user experiences."
         />
 
       </div>

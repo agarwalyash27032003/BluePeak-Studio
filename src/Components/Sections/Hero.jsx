@@ -27,7 +27,7 @@ const Hero = () => {
 
       </div>
 
-      <img className="h-28" src={logo} alt="" />
+      <img className="h-80" src="https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/BPS.png?updatedAt=1773667763921" alt="" />
 
     </section>
   )
