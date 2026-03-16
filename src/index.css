@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Myriad";
+  src: url("./Assets/Fonts/MYRIADPRO-BOLDCOND.woff") format("woff");
+  font-weight: 800;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 35s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 35s linear infinite;
+}
+
+.testimonial-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.contact-us-form input,
+.contact-us-form textarea {
+  background: #050816;
+  border-radius: 10px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+
+  border: 1px solid transparent;   /* important */
+  transition: border-color 0.3s ease;
+}
+
+.contact-us-form input:focus,
+.contact-us-form textarea:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 16px rgba(30, 58, 138, 0.4);
+  outline: none;
+}

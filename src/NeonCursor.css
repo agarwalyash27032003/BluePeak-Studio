@@ -1,0 +1,40 @@
+/* hide default cursor */
+* {
+  cursor: none;
+}
+
+.neon-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* main dot */
+.cursor-main {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #facc15; /* yellow-400 */
+  position: fixed;
+}
+
+/* outer ring */
+.cursor-trail {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #facc15;
+  position: fixed;
+}
+
+/* glow effect */
+.cursor-glow {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(250, 204, 21, 0.25);
+  filter: blur(20px);
+  position: fixed;
+}
