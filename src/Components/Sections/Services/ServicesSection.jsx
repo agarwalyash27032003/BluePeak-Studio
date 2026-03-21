@@ -52,10 +52,17 @@ export default function ServicesSection() {
     <>
       {/* <SectionHeader title={"Services"} /> */}
 
-      <h1 className="flex justify-center text-center items-center pt-36 text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">Services That Drive Growth</h1>
+      <h1 className="
+  flex justify-center text-center items-center
+  pt-24 sm:pt-28 md:pt-36
+  mb-10 sm:mb-16
+  text-5xl md:text-7xl font-bold leading-tight font-[azonix] px-4
+">
+        Services
+      </h1>
       <section
         ref={ref}
-        className="relative h-[300vh] w-[90%] mx-auto px-6"
+        className="relative h-[300vh] w-[90%] mx-auto px-4 sm:px-6 mt-[10rem] sm:mt-16"
       >
 
         <div className="sticky top-0 h-screen flex items-center">
@@ -63,7 +70,7 @@ export default function ServicesSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
             {/* LEFT SIDE (Titles) */}
-            <div className="flex flex-col justify-center gap-6">
+            <div className="flex flex-col justify-center gap-6 services-page-left-side">
 
               {services.map((s, i) => (
                 <motion.h2
@@ -73,7 +80,7 @@ export default function ServicesSection() {
                     x: i === active ? 0 : -30,
                   }}
                   transition={{ duration: 0.4 }}
-                  className={`text-3xl font-bold leading-tight font-[azonix] cursor-pointer ${i === active ? "text-yellow-400" : "text-white"
+                  className={`text-3xl font-semibold font-[dual] cursor-pointer ${i === active ? "text-yellow-400" : "text-white"
                     }`}
                 >
                   {s.title}
@@ -91,7 +98,7 @@ export default function ServicesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                
+
               >
                 <BorderGlow
                   edgeSensitivity={30}

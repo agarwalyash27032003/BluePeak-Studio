@@ -1,8 +1,9 @@
 import React from 'react'
+import "../../../index.css"
 
 const Hero = () => {
   return (
-    <div  className='flex flex-col justify-center items-center mt-[7rem] mb-[5rem] lg:mt-[10rem] w-[90%] mx-auto'>
+    <div  className='flex flex-col justify-center items-center mt-[7rem] mb-[5rem] w-[90%] mx-auto projects-hero'>
         <h1 className="text-5xl md:text-7xl font-bold leading-tight font-[azonix]">
           Projects
         </h1>
