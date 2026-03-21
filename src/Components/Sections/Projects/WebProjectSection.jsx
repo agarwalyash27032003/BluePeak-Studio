@@ -61,7 +61,7 @@ const WebProjectSection = () => {
       </div>
 
       {/* RIGHT */}
-      <div className="px-[3rem] space-y-32 lg:py-[5rem]">
+      <div className="px-[1rem] md:px-[3rem] space-y-8 lg:space-y-32 lg:py-[5rem]">
 
         {projects.map((project, index) => (
           <motion.a
