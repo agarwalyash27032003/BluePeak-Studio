@@ -6,7 +6,7 @@ const Footer = () => {
 
       {/* BIG BACKGROUND TEXT */}
       <h1 className="absolute top:0 lg:bottom-0 left-1/2 -translate-x-1/2 
-      text-[6rem] lg:text-[20vw] font-bold text-white/5 select-none pointer-events-none">
+      text-[5rem] md:text-[6rem] lg:text-[20vw] font-bold text-white/5 select-none pointer-events-none">
         bluepeak
       </h1>
 
