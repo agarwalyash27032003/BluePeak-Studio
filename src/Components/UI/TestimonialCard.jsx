@@ -14,7 +14,7 @@ const TestimonialCard = ({t}) => {
         ★★★★★
       </div>
 
-      <p className="text-gray-300 text-sm leading-relaxed">
+      <p className="text-gray-300 text-sm leading-relaxed dm-sans">
         "{t.text}"
       </p>
 

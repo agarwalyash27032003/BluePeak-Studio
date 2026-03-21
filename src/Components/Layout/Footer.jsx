@@ -2,18 +2,18 @@ import React from "react"
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden py-28 mt-40">
+    <footer className="relative overflow-hidden py-28">
 
       {/* BIG BACKGROUND TEXT */}
-      <h1 className="absolute bottom-0 left-1/2 -translate-x-1/2 
-      text-[20rem] font-bold text-white/5 select-none pointer-events-none">
+      <h1 className="absolute top:0 lg:bottom-0 left-1/2 -translate-x-1/2 
+      text-[6rem] lg:text-[20vw] font-bold text-white/5 select-none pointer-events-none">
         bluepeak
       </h1>
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10 dm-sans">
 
         {/* TOP SECTION */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
 
           {/* CONTACT */}
           <div className="space-y-4">
@@ -21,7 +21,7 @@ const Footer = () => {
               [ CALL US ]
             </p>
 
-            <p className="text-lg text-white">
+            <p className="text-sm lg:text-lg text-white">
               +91 93781 73053
             </p>
 
@@ -29,7 +29,7 @@ const Footer = () => {
               [ MAIL US ]
             </p>
 
-            <p className="text-xl font-semibold">
+            <p className="text-sm lg:text-lg font-semibold break-all">
               thebluepeakstudio@gmail.com
             </p>
           </div>
@@ -84,7 +84,7 @@ const Footer = () => {
 
 
         {/* BOTTOM BAR */}
-        <div className="mt-24 flex flex-col md:flex-row justify-between text-sm text-white/40 gap-4">
+        <div className="mt-24 flex flex-col md:flex-row justify-between text-sm text-white/40 gap-4 items-center">
 
           <p>
             ©2026 BluePeak Studio. All Rights Reserved

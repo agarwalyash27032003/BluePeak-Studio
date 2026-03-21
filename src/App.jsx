@@ -2,9 +2,11 @@ import Header from "./Components/Layout/Header";
 import { Routes, Route } from "react-router-dom";
 import NeonCursor from "./Components/UI/NeonCursor";
 import Home from "./Pages/Home";
-// import Projects from "./Pages/Projects";
-// import Services from "./Pages/Services";
-// import About from "./Pages/About";
+import Projects from "./Pages/Projects";
+import Services from "./Pages/Services";
+import About from "./Pages/About";
+import Footer from "./Components/Layout/Footer";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
@@ -14,10 +16,13 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/projects" element={<Projects />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} /> */}
+        <Route path="/about-us" element={<About />} />
+        <Route path="/contact" element={ <Contact /> } />
       </Routes>
+
+      <Footer />
     </div>
   );
 }

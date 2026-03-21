@@ -61,7 +61,7 @@ export default function SkillsSlider() {
       <SectionHeader title={"Tech Stack  ·"}/>
       <section
         ref={containerRef}
-        className="max-w-[1200px] mx-auto px-6 py-20 relative h-[300vh]"
+        className="max-w-[1200px] mx-auto px-6 relative h-[300vh]"
       >
 
         <div className="sticky top-0 h-screen flex items-center">
@@ -69,9 +69,9 @@ export default function SkillsSlider() {
           <div className="w-full grid grid-cols-[20%_70%_10%] items-center">
 
             {/* LEFT TEXT */}
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-1 lg:gap-4">
 
-              <h2 className="text-4xl font-bold text-white [writing-mode:vertical-rl] rotate-180">
+              <h2 className="text-2xl lg:text-4xl font-bold text-white [writing-mode:vertical-rl] rotate-180">
                 {skillsSets[index].text}
               </h2>
 
@@ -82,7 +82,7 @@ export default function SkillsSlider() {
             {/* SKILLS GRID */}
             <div
               key={index}
-              className="grid grid-cols-5 gap-10 text-center"
+              className="grid grid-cols-3 lg:grid-cols-5 gap-10 text-center"
             >
 
               {skillsSets[index].skills.map((skill) => (

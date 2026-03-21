@@ -44,7 +44,7 @@ function ParallaxText({ children, baseVelocity = 80 }) {
   });
 
   return (
-    <div className="parallax font-[Myriad]">
+    <div className="parallax font-[dual] tracking-[1px]">
       <motion.div className="scroller" style={{ x }}>
         {Array.from({ length: 20 }).map((_, i) => (
           <span key={i}>{children} </span>
