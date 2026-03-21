@@ -5,7 +5,7 @@ import Projects from '../Components/Sections/Home/Projects';
 import Trust from '../Components/Sections/Home/Trust';
 import SkillsSlider from '../Components/UI/SkillsSlider';
 import Testimonials from '../Components/Sections/Home/Testimonials';
-import ContactForm from '../Components/Sections/Home/ContactForm';
+import Contact from '../Components/Sections/Home/Contact';
 import Footer from '../Components/Layout/Footer';
 import Reveal from '../Components/UI/Reveal';
 
@@ -36,7 +36,7 @@ const Home = () => {
       </Reveal>
 
       <Reveal>
-        <ContactForm />
+        <Contact />
       </Reveal>
 
     </div>
