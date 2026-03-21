@@ -9,19 +9,20 @@ const ContactInfo = () => {
             <h2 className="text-base mt-6 text-lg md:text-2xl dm-sans text-gray-400 mx-auto md:mx-0 text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde quisquam tempore deleniti recusandae veniam, atque quia suscipit explicabo temporibus quibusdam.</h2>
             <div className="space-y-4 mt-8 mx-auto">
                 <div className='flex gap-4 items-center'>
-                    <RiContactsLine size={50}/>
+                    <RiContactsLine className="shrink-0" size={50} />
                     <p className="text-lg md:text-2xl dm-sans text-gray-400">
                         +91 93781 73053
                     </p>
                 </div>
+
                 <div className='flex gap-4 items-center'>
-                    <MdOutlineAttachEmail size={50}/>
-                    <p className="text-lg md:text-2xl dm-sans text-gray-400">
+                    <MdOutlineAttachEmail className="shrink-0" size={50} />
+                    <p className="text-lg md:text-2xl dm-sans text-gray-400 break-all">
                         thebluepeakstudio@gmail.com
                     </p>
                 </div>
 
-                
+
             </div>
         </div>
     )
