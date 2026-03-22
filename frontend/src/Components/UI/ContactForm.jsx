@@ -6,7 +6,7 @@ const ContactForm = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    contactNo: "",
     email: "",
     message: "",
   });
@@ -46,7 +46,7 @@ const ContactForm = () => {
 
         setFormData({
           name: "",
-          phone: "",
+          contactNo: "",
           email: "",
           message: "",
         });
@@ -84,8 +84,8 @@ const ContactForm = () => {
           <h2>Contact Number</h2>
           <input
             type="text"
-            name="phone"
-            value={formData.phone}
+            name="conactNo"
+            value={formData.contactNo}
             onChange={handleChange}
           />
         </div>
