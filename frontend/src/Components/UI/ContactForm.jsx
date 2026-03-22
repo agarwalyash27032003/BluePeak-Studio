@@ -6,7 +6,7 @@ const ContactForm = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    contactNo: "", // ✅ FIXED
+    contactNo: "",
     email: "",
     message: "",
   });
@@ -63,20 +63,75 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="py-10 px-4 lg:px-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl overflow-hidden lg:ml-16 lg:mr-16">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        
-        <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" required />
-        
-        <input name="contactNo" value={formData.contactNo} onChange={handleChange} placeholder="Contact Number" required />
-        
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-        
-        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" required />
+    <div className="py-10 px-6 lg:px-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl overflow-hidden lg:ml-16 lg:mr-16">
 
-        <button type="submit" disabled={loading}>
-          <Button title={loading ? "Sending..." : "Submit!"} />
-        </button>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-white dm-sans">
+
+        {/* Name */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-300">Name</label>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Jane Smith"
+            required
+            className="bg-transparent border border-white/20 focus:border-[#e87829] focus:ring-0 outline-none px-4 py-3 rounded-xl transition-all"
+          />
+        </div>
+
+        {/* Contact Number */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-300">Contact Number</label>
+          <input
+            name="contactNo"
+            value={formData.contactNo}
+            onChange={handleChange}
+            placeholder="+44 9999 999999"
+            required
+            className="bg-transparent border border-white/20 focus:border-[#e87829] focus:ring-0 outline-none px-4 py-3 rounded-xl transition-all"
+          />
+        </div>
+
+        {/* Email */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-300">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="example@email.com"
+            required
+            className="bg-transparent border border-white/20 focus:border-[#e87829] focus:ring-0 outline-none px-4 py-3 rounded-xl transition-all"
+          />
+        </div>
+
+        {/* Message */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-300">Message</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Enter your message..."
+            required
+            rows={4}
+            className="bg-transparent border border-white/20 focus:border-[#e87829] focus:ring-0 outline-none px-4 py-3 rounded-xl transition-all resize-none"
+          />
+        </div>
+
+        {/* Button */}
+        <div className="flex justify-center mt-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-[180px]"
+          >
+            <Button title={loading ? "Sending..." : "Submit"} />
+          </button>
+        </div>
+
       </form>
     </div>
   );

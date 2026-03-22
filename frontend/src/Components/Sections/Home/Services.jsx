@@ -37,7 +37,6 @@ const Services = () => {
             {/* BG IMAGE */}
             <div className="
               absolute inset-0
-              bg-[url('https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/top-view-unrecognizable-hacker-performing-cyberattack-night%20(1).jpg')]
               bg-cover bg-center
             "></div>
 
