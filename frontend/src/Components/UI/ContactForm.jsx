@@ -6,7 +6,7 @@ const ContactForm = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    contactNo: "",
+    contactNo: "", // ✅ FIXED
     email: "",
     message: "",
   });
@@ -23,8 +23,8 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill required fields ❗");
+    if (!formData.name || !formData.contactNo || !formData.email || !formData.message) {
+      alert("Please fill all fields ❗");
       return;
     }
 
@@ -53,6 +53,7 @@ const ContactForm = () => {
       } else {
         alert(data.message || "Something went wrong ❌");
       }
+
     } catch (error) {
       console.error(error);
       alert("Server error ❌");
@@ -63,66 +64,19 @@ const ContactForm = () => {
 
   return (
     <div className="py-10 px-4 lg:px-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl overflow-hidden lg:ml-16 lg:mr-16">
-      <form
-        onSubmit={handleSubmit}
-        className="contact-us-form flex flex-col gap-3 justify-center dm-sans"
-      >
-        {/* Name */}
-        <div>
-          <h2>Name</h2>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        
+        <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" required />
+        
+        <input name="contactNo" value={formData.contactNo} onChange={handleChange} placeholder="Contact Number" required />
+        
+        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
+        
+        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" required />
 
-        {/* Phone */}
-        <div>
-          <h2>Contact Number</h2>
-          <input
-            type="text"
-            name="conactNo"
-            value={formData.contactNo}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Email */}
-        <div>
-          <h2>Email</h2>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Message */}
-        <div>
-          <h2>Message</h2>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-
-        {/* Button */}
-        <div className="w-[50%] mx-auto flex justify-center items-center">
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full"
-          >
-            <Button title={loading ? "Sending..." : "Submit!"} />
-          </button>
-        </div>
+        <button type="submit" disabled={loading}>
+          <Button title={loading ? "Sending..." : "Submit!"} />
+        </button>
       </form>
     </div>
   );
