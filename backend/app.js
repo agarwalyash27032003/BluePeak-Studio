@@ -10,8 +10,20 @@ const app = express();
 const PORT = process.env.PORT || 10000;
 
 // ✅ Middleware
+const allowedOrigins = [
+  "https://bluepeak-studio-frontend.onrender.com",
+  "https://bluepeakstudio.in"
+];
+
 app.use(cors({
-  origin: "https://bluepeak-studio-frontend.onrender.com", // 🔥 replace this
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST"],
 }));
 
 app.use(express.json());
