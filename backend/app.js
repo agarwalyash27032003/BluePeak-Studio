@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 10000;
 
 // ✅ Middleware
 app.use(cors({
-  origin: "https://bluepeak-studio-frontend.onrender.com/", // 🔥 replace this
+  origin: "https://bluepeak-studio-frontend.onrender.com", // 🔥 replace this
 }));
 
 app.use(express.json());
