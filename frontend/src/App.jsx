@@ -13,7 +13,16 @@ import ScrollTop from "./Components/UI/ScrollTop";
 function App() {
   return (
     <div className="text-white min-h-screen bg-gradient-to-br from-[#050816] via-[#0f172a] to-[#1e3a8a]">
-      <Toaster position="top-right" />
+      <Toaster
+        position="top"
+        toastOptions={{
+          style: {
+            background: "#1e293b",
+            color: "#fff",
+            border: "1px solid rgba(255,255,255,0.1)",
+          },
+        }}
+      />
       <ScrollTop />
       <NeonCursor />
       <Header />
@@ -23,7 +32,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about-us" element={<About />} />
-        <Route path="/contact" element={ <Contact /> } />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
       <Footer />
