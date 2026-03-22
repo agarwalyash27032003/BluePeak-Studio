@@ -7,11 +7,13 @@ import Services from "./Pages/Services";
 import About from "./Pages/About";
 import Footer from "./Components/Layout/Footer";
 import Contact from "./Pages/Contact";
+import { Toaster } from "react-hot-toast";
 import ScrollTop from "./Components/UI/ScrollTop";
 
 function App() {
   return (
     <div className="text-white min-h-screen bg-gradient-to-br from-[#050816] via-[#0f172a] to-[#1e3a8a]">
+      <Toaster position="top-right" />
       <ScrollTop />
       <NeonCursor />
       <Header />

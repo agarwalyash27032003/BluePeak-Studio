@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import toast from "react-hot-toast"; // ✅ added
 
 const ContactForm = () => {
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
@@ -24,7 +25,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.contactNo || !formData.email || !formData.message) {
-      alert("Please fill all fields ❗");
+      toast.error("Please fill all fields ❗"); // ✅ changed
       return;
     }
 
@@ -42,7 +43,7 @@ const ContactForm = () => {
       const data = await res.json();
 
       if (res.ok) {
-        alert("Message sent successfully ✅");
+        toast.success("Message sent successfully ✅"); // ✅ changed
 
         setFormData({
           name: "",
@@ -51,12 +52,12 @@ const ContactForm = () => {
           message: "",
         });
       } else {
-        alert(data.message || "Something went wrong ❌");
+        toast.error(data.message || "Something went wrong ❌"); // ✅ changed
       }
 
     } catch (error) {
       console.error(error);
-      alert("Server error ❌");
+      toast.error("Server error ❌"); // ✅ changed
     } finally {
       setLoading(false);
     }
@@ -70,7 +71,6 @@ const ContactForm = () => {
         className='contact-us-form flex flex-col gap-3 justify-center dm-sans'
       >
 
-        {/* Name */}
         <div>
           <h2>Name</h2>
           <input
@@ -82,7 +82,6 @@ const ContactForm = () => {
           />
         </div>
 
-        {/* Contact Number */}
         <div>
           <h2>Contact Number</h2>
           <input
@@ -94,7 +93,6 @@ const ContactForm = () => {
           />
         </div>
 
-        {/* Email */}
         <div>
           <h2>Email</h2>
           <input
@@ -106,7 +104,6 @@ const ContactForm = () => {
           />
         </div>
 
-        {/* Message */}
         <div>
           <h2>Message</h2>
           <textarea
@@ -117,7 +114,6 @@ const ContactForm = () => {
           ></textarea>
         </div>
 
-        {/* Button */}
         <div className='w-[50%] mx-auto flex justify-center items-center'>
           <button type="submit" disabled={loading}>
             <Button title={loading ? "Sending..." : "Submit!"} />
