@@ -18,9 +18,9 @@ const Hero = () => {
           We design and develop modern websites that are fast, scalable, and built to drive real results for your business.
         </p>
 
-        <div className="mt-8 flex justify-center md:justify-start">
+        {/* <div className="mt-8 flex justify-center md:justify-start">
           <Button title={"Get Started!"} />
-        </div>
+        </div> */}
 
       </div>
 

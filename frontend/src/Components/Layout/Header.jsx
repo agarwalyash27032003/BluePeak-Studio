@@ -68,7 +68,9 @@ const Header = () => {
 
         {/* DESKTOP BUTTON */}
         <div className="hidden md:block">
-          <Button title={"Let's Talk"} />
+          <NavLink to="/contact">
+            <Button title={"Let's Talk"} />
+          </NavLink>
         </div>
 
         {/* HAMBURGER (< md) */}
@@ -135,7 +137,9 @@ const Header = () => {
               </NavLink>
             ))}
 
-            <Button title={"Let's Talk"} />
+            <NavLink to="/contact" onClick={() => setOpen(false)}>
+              <Button title={"Let's Talk"} />
+            </NavLink>
 
           </motion.div>
         )}
