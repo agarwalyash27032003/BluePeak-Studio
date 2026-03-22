@@ -1,8 +1,17 @@
-const express = require("express");
-const router = express.Router();
+// controllers/contactForm.controller.js
 
-const { createContactForm } = require("./contactForm.controller");
+const ContactForm = require('../models/contactform');
 
-router.post("/", createContactForm);
+module.exports.createContactForm = async (req, res) => {
+  try {
+    const saved = await ContactForm.create(req.body);
 
-module.exports = router;
+    console.log("✅ SAVED:", saved);
+
+    res.status(200).json({ success: true });
+
+  } catch (err) {
+    console.error("❌ ERROR:", err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
