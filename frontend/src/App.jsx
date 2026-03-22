@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="text-white min-h-screen bg-gradient-to-br from-[#050816] via-[#0f172a] to-[#1e3a8a]">
       <Toaster
-        position="top"
+        position="top-center"
         toastOptions={{
           style: {
             background: "#1e293b",

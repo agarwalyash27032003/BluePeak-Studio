@@ -43,7 +43,7 @@ const ContactForm = () => {
       const data = await res.json();
 
       if (res.ok) {
-        toast.success("Message sent successfully ✅"); // ✅ changed
+        toast.success("Form Has Been Submitted Successfully!"); // ✅ changed
 
         setFormData({
           name: "",
@@ -52,7 +52,7 @@ const ContactForm = () => {
           message: "",
         });
       } else {
-        toast.error(data.message || "Something went wrong ❌"); // ✅ changed
+        toast.error(data.message || "Something went wrong!"); // ✅ changed
       }
 
     } catch (error) {
