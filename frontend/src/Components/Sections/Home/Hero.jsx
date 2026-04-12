@@ -5,7 +5,7 @@ import '../../../Hero.css';
 const Hero = () => {
   const leftRef = useRef(null);
   const [counts, setCounts] = useState({ projects: 0, satisfaction: 0, lift: 0 });
-  
+
   const words = ["Design", "Build", "Elevate"];
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -84,9 +84,9 @@ const Hero = () => {
           </p>
 
           <div data-reveal className="hero-cta-wrapper">
-            <Button 
+            <Button
               title="Book a Free Call"
-              onClick={() => window.location.href = '#contact'} 
+              onClick={() => window.open('https://calendly.com/thebluepeakstudio/30min', '_blank', 'noopener,noreferrer')}
               className="hero-primary-btn"
             />
           </div>

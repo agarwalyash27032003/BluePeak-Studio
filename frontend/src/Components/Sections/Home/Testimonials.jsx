@@ -5,29 +5,19 @@ import SectionHeader from "../../UI/SectionHeader"
 const testimonials = [
   {
     name: "Tvastih Studio",
-    text: "Had a really great experience working with BluePeak Studio—they understood exactly what we wanted and delivered a clean, modern website that looks great and works smoothly. The whole process was easy, communication was clear, and they were quick with changes. Very happy with the final result and would definitely recommend them.",
-    img: "https://i.pravatar.cc/100?img=1"
+    text: "Had a really great experience working with BluePeak Studio—they understood exactly what we wanted and delivered a clean, modern website that looks great and works smoothly. Very happy with the final result and would definitely recommend them.",
+    img: "https://ik.imagekit.io/bluepeakstudio/Chikoo%20Constructions/Logo.jpg"
   },
   {
-    name: "David Park",
-    text: "This saved us a lot of development time. The component works flawlessly.",
-    img: "https://i.pravatar.cc/100?img=2"
+    name: "Zolo Media",
+    text: "Yash delivered high-quality work on the project. His proficiency was evident in the innovative solutions he implemented.",
+    img: "https://ik.imagekit.io/bluepeakstudio/Chikoo%20Constructions/1667542912129.jpg"
   },
   {
-    name: "Daniel Carter",
-    text: "One of the best testimonial components I've used.",
-    img: "https://i.pravatar.cc/100?img=3"
+    name: "Mr Lazy Tech",
+    text: "BluePeak Studio did an amazing job building my blogging website—they perfectly understood my needs as a tech YouTuber and delivered a clean, fast, and user-friendly site. What impressed me the most is that the website started ranking on several high-performing keywords within a short time.",
+    img: "https://ik.imagekit.io/bluepeakstudio/Chikoo%20Constructions/channels4_profile%20(1).jpg"
   },
-  {
-    name: "Michael Chen",
-    text: "This tool saved me hours of work. The automation features are amazing.",
-    img: "https://i.pravatar.cc/100?img=4"
-  },
-  {
-    name: "Sarah Thompson",
-    text: "It's intuitive, fast, and incredibly accurate!",
-    img: "https://i.pravatar.cc/100?img=5"
-  }
 ]
 
 export default function Testimonials() {

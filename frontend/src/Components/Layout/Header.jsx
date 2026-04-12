@@ -69,7 +69,11 @@ const Header = () => {
         {/* DESKTOP BUTTON */}
         <div className="hidden md:block">
           <NavLink to="/contact">
-            <Button title={"Let's Talk"} />
+            <Button
+              title="Book a Free Call"
+              onClick={() => window.open('https://calendly.com/thebluepeakstudio/30min', '_blank', 'noopener,noreferrer')}
+              className="hero-primary-btn"
+            />
           </NavLink>
         </div>
 
