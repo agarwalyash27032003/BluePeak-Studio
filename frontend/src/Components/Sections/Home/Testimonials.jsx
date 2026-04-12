@@ -4,32 +4,27 @@ import SectionHeader from "../../UI/SectionHeader"
 
 const testimonials = [
   {
-    name: "Emily Rodriguez",
-    role: "Data Analyst",
-    text: "The AI's ability to analyze data and provide insights is unmatched.",
+    name: "Tvastih Studio",
+    text: "Had a really great experience working with BluePeak Studio—they understood exactly what we wanted and delivered a clean, modern website that looks great and works smoothly. The whole process was easy, communication was clear, and they were quick with changes. Very happy with the final result and would definitely recommend them.",
     img: "https://i.pravatar.cc/100?img=1"
   },
   {
     name: "David Park",
-    role: "Startup Founder",
     text: "This saved us a lot of development time. The component works flawlessly.",
     img: "https://i.pravatar.cc/100?img=2"
   },
   {
     name: "Daniel Carter",
-    role: "Web Designer",
     text: "One of the best testimonial components I've used.",
     img: "https://i.pravatar.cc/100?img=3"
   },
   {
     name: "Michael Chen",
-    role: "Software Developer",
     text: "This tool saved me hours of work. The automation features are amazing.",
     img: "https://i.pravatar.cc/100?img=4"
   },
   {
     name: "Sarah Thompson",
-    role: "Project Manager",
     text: "It's intuitive, fast, and incredibly accurate!",
     img: "https://i.pravatar.cc/100?img=5"
   }

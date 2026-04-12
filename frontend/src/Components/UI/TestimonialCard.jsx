@@ -28,9 +28,6 @@ const TestimonialCard = ({t}) => {
           <p className="font-semibold text-white">
             {t.name}
           </p>
-          <p className="text-xs text-gray-400">
-            {t.role}
-          </p>
         </div>
       </div>
     </div>
