@@ -23,6 +23,17 @@
     justify-content: space-between;
     gap: 3rem;
     z-index: 10;
+    opacity: 0;
+  transform: translateY(40px);
+  /* Use a premium cubic-bezier for the transition */
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.hero-content-wrapper.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-left {
@@ -127,6 +138,12 @@
     max-width: 420px; 
     filter: drop-shadow(0 0 60px rgba(55, 138, 221, 0.2));
     animation: floatEffect 7s ease-in-out infinite;
+}
+
+.hero-logo-glow {
+  will-change: transform, opacity;
+  /* Ensure the container doesn't hide the glow effect when moving */
+  overflow: visible; 
 }
 
 @keyframes floatEffect {

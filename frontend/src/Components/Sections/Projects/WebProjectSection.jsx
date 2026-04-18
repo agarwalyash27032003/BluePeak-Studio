@@ -1,108 +1,128 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from 'react'
+import "./Project.css"
 
 const projects = [
   {
-    title: "Chikoo Constructions",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-21%20003541.png",
-    link: "https://chikoo-constructions.vercel.app/",
+    title: 'Chikoo Constructions',
+    category: 'Real Estate',
+    desc: 'A high-performance corporate portal for a premier construction firm, featuring interactive project galleries and optimized lead generation flows.',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    color: '#378ADD',
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-21%20003541.png?updatedAt=1774033590358',
+    link: '#',
+    size: 'large' // Used for layout variation
   },
   {
-    title: "Tvastih Studio",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221051.png",
-    link: "https://agarwalyash2703.wixsite.com/tvastih",
+    title: 'WanderLust',
+    category: 'Web App',
+    desc: 'Premium Property Listing and Booking Website.',
+    tags: ['JavaScript', 'Express.js', 'REST APIs', 'Node.js', 'MySQL'],
+    color: '#D85A30',
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221731.png?updatedAt=1774033525183',
+    link: 'https://wanderlust-1k0r.onrender.com/listings',
+    size: 'large'
   },
   {
-    title: "WanderLust",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221731.png",
-    link: "https://wanderlust-1k0r.onrender.com/listings",
+    title: 'Tvastih Studio',
+    category: 'E-Commerce',
+    desc: 'Enterprise-grade project management dashboard featuring high-performance Kanban systems.',
+    tags: ['Wix'],
+    color: '#5DCAA5',
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221051.png?updatedAt=1774033525219',
+    link: '#',
+    size: 'small'
   },
   {
-    title: "Glass Studio Siliguri",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221510.png",
-    link: "https://zolomedia.wixsite.com/glass-decor",
+    title: 'Glass Studio Slg',
+    category: 'Landing Page',
+    desc: 'Art-directed digital experience for a premium photography collective.',
+    tags: ['Wix'],
+    color: '#EF9F27',
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221510.png?updatedAt=1774033524897',
+    link: '#',
+    size: 'small'
   },
-];
+]
 
-const WebProjectSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const filters = ['All', 'E-Commerce', 'Real Estate', 'Landing Page', 'Web App']
+
+export default function WebProjectSection() {
+  const [active, setActive] = useState('All')
+  const [visible, setVisible] = useState(projects)
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll(".project-item");
+    const filtered = active === 'All' ? projects : projects.filter((p) => p.category === active)
+    setVisible(filtered)
+  }, [active])
 
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2) {
-          setActiveIndex(index);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useEffect(() => {
+    const cards = containerRef.current?.querySelectorAll('[data-pcard]')
+    if (!cards) return
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1'
+            e.target.style.transform = 'translateY(0)'
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    cards.forEach((c) => obs.observe(c))
+    return () => obs.disconnect()
+  }, [visible])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:border-y lg:border-white">
-
-      {/* LEFT */}
-      <div className="lg:border-r lg:border-white px-[5rem] hidden lg:block">
-        <div className="sticky top-0 h-screen flex flex-col justify-center">
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight font-[azonix]">All Works</h1>
-          <p className="text-gray-400 text-xl md:text-2xl dm-sans transition-all duration-500">
-            {projects[activeIndex].title}
-          </p>
+    <section className="port-container" id="portfolio">
+      <div className="port-header">
+        <div className="port-filters">
+          {filters.map((f) => (
+            <button
+              key={f}
+              className={`port-filter-btn ${active === f ? 'active' : ''}`}
+              onClick={() => setActive(f)}
+            >
+              {f}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* RIGHT */}
-      <div className="px-[1rem] md:px-[3rem] space-y-8 lg:space-y-32 lg:py-[5rem]">
-
-        {projects.map((project, index) => (
-          <motion.a
-            key={index}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block project-item group"
-
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          >
-            <div className="relative overflow-hidden rounded-2xl">
-
-              {/* IMAGE */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full object-cover transition duration-700 group-hover:scale-110"
-              />
-
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
-                <span className="text-white text-lg tracking-wide">
-                  View Project →
-                </span>
+      <div className="port-grid" ref={containerRef}>
+        {visible.map((p) => (
+          <div key={p.title} className="port-card" data-pcard>
+            <div className="port-card-inner">
+              <div className="port-image-container">
+                <img src={p.img} alt={p.title} />
+                <div className="port-overlay">
+                  <a href={p.link} className="port-view-btn">
+                    View
+                  </a>
+                </div>
               </div>
-
+              
+              <div className="port-content">
+                <div className="port-meta">
+                  <span className="port-category">{p.category}</span>
+                  <div className="port-line" style={{ backgroundColor: p.color }} />
+                </div>
+                <h3 className="port-card-title">{p.title}</h3>
+                <p className="port-card-desc">{p.desc}</p>
+                
+                <div className="port-tags">
+                  {p.tags.map(tag => (
+                    <span key={tag} className="port-tag bg-yellow-400">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-row justify-between mt-[5px] text-gray-400 text-lg dm-sans">
-              <h1>({index + 1})</h1>
-              <h1>{project.title}</h1>
-            </div>
-          </motion.a>
+          </div>
         ))}
-
       </div>
-    </div>
-  );
-};
-
-export default WebProjectSection;
+    </section>
+  )
+}

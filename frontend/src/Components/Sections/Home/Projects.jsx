@@ -49,6 +49,7 @@ export default function Projects() {
                 <img
                   src={project.image}
                   className="absolute inset-0 w-full h-full object-cover opacity-60"
+                  alt={project.title}
                 />
 
                 <div className="item-content">

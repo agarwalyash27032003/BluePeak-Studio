@@ -115,7 +115,6 @@ const ContactForm = () => {
         </div>
 
         <div className='w-[50%] mx-auto flex justify-center items-center'>
-          {/* Logic remains exactly the same, but passed as props to your component */}
           <Button 
             type="submit" 
             disabled={loading} 

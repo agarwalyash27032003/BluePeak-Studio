@@ -97,40 +97,45 @@ body {
   background: #050816;
 }
 
+/* index.css */
+
+/* index.css */
+
 @keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes scroll-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 .animate-scroll-left {
-  animation: scroll-left 35s linear infinite;
+  animation: scroll-left 50s linear infinite; /* Slightly slower = smoother */
+  will-change: transform;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 35s linear infinite;
+  animation: scroll-right 50s linear infinite;
+  will-change: transform;
 }
 
-.testimonial-mask {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+/* REPLACING MASK WITH OVERLAYS (Fixes the blur bug) */
+.testimonial-container-fixed {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-container-fixed::before,
+.testimonial-container-fixed::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .contact-us-form input,
@@ -149,6 +154,22 @@ body {
   border-color: #1e3a8a;
   box-shadow: 0 0 16px rgba(30, 58, 138, 0.4);
   outline: none;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(55, 138, 221, 0.1);
+    border: 1px solid rgba(55, 138, 221, 0.2);
+    color: #85b7eb;
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 5px 14px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: fit-content;
+    font-weight: 500;
 }
 
 @media (min-width: 768px) {

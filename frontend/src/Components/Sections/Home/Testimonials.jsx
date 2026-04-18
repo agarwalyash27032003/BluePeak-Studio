@@ -21,27 +21,15 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
-
   return (
     <>
-        <SectionHeader title={"Testimonials"}/>
-        <section className="py-32">
-
-            <div className="space-y-8 relative testimonial-mask">
-
-                <TestimonialsRow
-                testimonials={testimonials}
-                direction="left"
-                />
-
-                <TestimonialsRow
-                testimonials={testimonials}
-                direction="right"
-                />
-
-            </div>
-
-        </section>
+      <SectionHeader title={"Testimonials"}/>
+      <section className="py-32 testimonial-container-fixed"> {/* Added fixed container */}
+        <div className="space-y-8 relative">
+          <TestimonialsRow testimonials={testimonials} direction="left" />
+          <TestimonialsRow testimonials={testimonials} direction="right" />
+        </div>
+      </section>
     </>
   )
 }

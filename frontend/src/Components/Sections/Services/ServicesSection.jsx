@@ -1,196 +1,157 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import BorderGlow from "../../../Components/UI/BorderGlow";
+import { motion, useScroll, useMotionValueEvent, LayoutGroup } from "framer-motion";
+import "../../../index.css"
 
 const services = [
   {
+    id: "01",
     title: "Website Development",
+    tagline: "High-Performance Engineering",
     desc: "We build fast, scalable, and high-performance websites using modern technologies like React and Next.js.",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Website%20Development.png",
+    features: ["React / Next.js", "Scalable Architecture", "Clean Code"],
+    accent: "#5DCAA5"
   },
   {
+    id: "02",
     title: "UI/UX Design",
+    tagline: "Human-Centric Design",
     desc: "Crafting intuitive and visually engaging interfaces that improve user experience and drive conversions.",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/UIUX.png",
+    features: ["Visual Strategy", "User Experience", "Interactive Prototypes"],
+    accent: "#378ADD"
   },
   {
+    id: "03",
     title: "E-Commerce",
+    tagline: "Scalable Digital Commerce",
     desc: "Design and development of modern online stores that scale with your business and maximize revenue.",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/E%20Commerce.png?updatedAt=1774040342739",
+    features: ["Storefront Design", "Revenue Growth", "Modern Tech"],
+    accent: "#fbbf24"
   },
   {
+    id: "04",
     title: "Landing Pages",
+    tagline: "Conversion Engines",
     desc: "High-converting landing pages built for marketing campaigns and lead generation.",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Landing%20Pages.png?updatedAt=1774040342871",
+    features: ["Lead Gen Focus", "Fast Loading", "Marketing Optimized"],
+    accent: "#EF9F27"
   },
   {
+    id: "05",
     title: "Optimization",
+    tagline: "Technical Excellence",
     desc: "Performance, SEO, and technical improvements to boost speed and rankings.",
-    image:
-      "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/SEO.png?updatedAt=1774214178321",
+    features: ["SEO Mastery", "Speed Optimization", "Technical Audit"],
+    accent: "#378ADD"
   },
 ];
 
 export default function ServicesSection() {
-  const mobileRef = useRef(null);
-  const desktopRef = useRef(null);
-
+  const containerRef = useRef(null);
   const [active, setActive] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Detect screen size properly
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  // Use correct ref dynamically
   const { scrollYProgress } = useScroll({
-    target: isMobile ? mobileRef : desktopRef,
+    target: containerRef,
     offset: ["start start", "end end"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const index = Math.min(
-      services.length - 1,
-      Math.floor(v * services.length)
-    );
-    setActive(index);
+    const index = Math.min(services.length - 1, Math.floor(v * services.length));
+    if (index !== active) setActive(index);
   });
 
   return (
-    <>
-      {/* HEADING */}
-      {/* <h1 className="flex justify-center text-center items-center pt-20 sm:pt-28 md:pt-36 mb-8 sm:mb-16 text-3xl sm:text-5xl md:text-7xl font-bold leading-tight font-[azonix] px-4">
-        Services
-      </h1> */}
+    <section ref={containerRef} className="relative h-[500vh]">
+      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+        
+        {/* Optimized Ambient Glow */}
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-10 transition-colors duration-700 pointer-events-none"
+          style={{ background: `radial-gradient(circle, ${services[active].accent} 0%, transparent 70%)` }}
+        />
 
-      {/* ================= MOBILE ================= */}
-      <section
-        ref={mobileRef}
-        className="md:hidden relative h-[250vh] w-[90%] mx-auto px-4"
-      >
-        <div className="sticky top-0 h-screen flex flex-col justify-center items-center">
-
+        <div className="max-w-[1400px] mx-auto w-full px-6 grid grid-cols-1 md:grid-cols-12 gap-16 items-center z-10">
           
+          {/* LEFT: THE NAVIGATOR */}
+          <div className="md:col-span-5">
 
-          {/* Title */}
-          <motion.h2
-            key={active}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-3xl font-semibold font-[dual] text-yellow-400 mb-6 text-center"
-          >
-            {services[active].title}
-          </motion.h2>
-
-          {/* Card */}
-          <motion.div
-            key={active + "card"}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full"
-          >
-            <BorderGlow
-              edgeSensitivity={30}
-              glowColor="40 80 80"
-              backgroundColor="#060010"
-              borderRadius={20}
-              glowRadius={30}
-              glowIntensity={1}
-              coneSpread={25}
-              animated={false}
-              colors={["#c084fc", "#f472b6", "#38bdf8"]}
-            >
-              <div className="p-5 flex flex-col items-center text-center">
-                <img
-                  src={services[active].image}
-                  alt=""
-                  className="h-[15rem] mb-4"
-                />
-                <p className="dm-sans text-gray-400 text-xl">
-                  {services[active].desc}
-                </p>
-              </div>
-            </BorderGlow>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================= DESKTOP ================= */}
-      <section
-        ref={desktopRef}
-        className="hidden md:block relative h-[300vh] w-[90%] mx-auto px-6 mt-16"
-      >
-        <div className="sticky top-[80px] h-[calc(100vh-80px)] flex items-center">
-          <div className="grid grid-cols-2 gap-12 w-full">
-
-            {/* LEFT */}
-            <div className="flex flex-col justify-center gap-6">
-              {services.map((s, i) => (
-                <motion.h2
-                  key={i}
-                  animate={{
-                    opacity: i === active ? 1 : 0.3,
-                    x: i === active ? 0 : -30,
-                  }}
-                  transition={{ duration: 0.4 }}
-                  className={`text-2xl lg:text-3xl font-semibold font-[dual] cursor-pointer ${
-                    i === active ? "text-yellow-400" : "text-white"
-                  }`}
-                >
-                  {s.title}
-                </motion.h2>
-              ))}
-            </div>
-
-            {/* RIGHT */}
-            <div className="flex items-center">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <BorderGlow
-                  edgeSensitivity={30}
-                  glowColor="40 80 80"
-                  backgroundColor="#060010"
-                  borderRadius={28}
-                  glowRadius={40}
-                  glowIntensity={1}
-                  coneSpread={25}
-                  animated={false}
-                  colors={["#c084fc", "#f472b6", "#38bdf8"]}
-                >
-                  <div className="px-8 py-4 flex flex-col items-center text-center">
-                    <img
-                      src={services[active].image}
-                      alt=""
-                      className="h-[200px]"
-                    />
-                    <h2 className="text-3xl font-semibold font-[dual] mt-4">
-                      {services[active].title}
-                    </h2>
-                    <p className="text-gray-400 text-lg mt-2">
-                      {services[active].desc}
-                    </p>
+            <div className="relative space-y-10 pl-6 border-l border-white/5">
+              <LayoutGroup>
+                {services.map((s, i) => (
+                  <div key={i} className="relative">
+                    {i === active && (
+                      <motion.div 
+                        layoutId="navIndicator"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="absolute -left-[26px] top-0 bottom-0 w-[3px] bg-yellow-400 shadow-[0_0_15px_#fbbf24]"
+                      />
+                    )}
+                    <div className={`transition-all duration-500 ${i === active ? "translate-x-4 opacity-100" : "opacity-20"}`}>
+                      <span className="block text-[10px] font-bold mb-1 font-mono" style={{ color: s.accent }}>{s.id}</span>
+                      <h3 className="text-2xl md:text-3xl font-[azonix] text-white uppercase tracking-tighter">
+                        {s.title}
+                      </h3>
+                    </div>
                   </div>
-                </BorderGlow>
-              </motion.div>
+                ))}
+              </LayoutGroup>
             </div>
-
           </div>
+
+          {/* RIGHT: THE DISPLAY CANVAS */}
+          <div className="md:col-span-7 relative h-[500px]">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={false}
+                animate={{ 
+                  opacity: index === active ? 1 : 0,
+                  x: index === active ? 0 : 30,
+                  scale: index === active ? 1 : 0.95,
+                  pointerEvents: index === active ? "auto" : "none"
+                }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 bg-[#0d1224] border border-white/5 rounded-[40px] p-10 md:p-16 overflow-hidden flex flex-col justify-center"
+                style={{ willChange: "opacity, transform" }}
+              >
+                {/* Visual Accent */}
+                <div 
+                  className="absolute top-0 right-0 w-32 h-32 blur-[60px] opacity-20" 
+                  style={{ background: service.accent }}
+                />
+
+                <div className="relative z-10">
+                  <span className="hero-badge mb-6">
+                    {service.tagline}
+                  </span>
+                  
+                  <h4 className="text-4xl font-[azonix] text-white mb-6 leading-tight">
+                    {service.title}
+                  </h4>
+                  
+                  <p className="dm-sans text-xl text-white/50 leading-relaxed mb-10 max-w-lg">
+                    {service.desc}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {service.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                        <span className="text-xs font-bold text-white/80 tracking-wide uppercase">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Number Watermark */}
+                <span className="absolute -bottom-10 -right-10 text-[180px] font-[azonix] text-white/[0.02] pointer-events-none">
+                  {service.id}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

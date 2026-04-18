@@ -1,22 +1,70 @@
-import React from 'react'
+import { useEffect, useRef } from 'react'
+import "./Contact.css"
+import Button from '../../UI/Button'
 import SectionHeader from '../../UI/SectionHeader'
-import '../../../index.css'
-import ContactForm from "../../UI/ContactForm"
 
-const Contact = () => {
+export default function Contact() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) el.classList.add('banner-in') }),
+      { threshold: 0.1 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <>
       <SectionHeader title={"Contact Us"} />
-      <div className='w-[90vw] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 justify-center items-center'>
-        <div>
-          <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold leading-tight'>Ready to Build Something Exceptional?</h1>
-          <h3 className='text-gray-400 text-xl md:text-2xl dm-sans max-w-md'>We combine sleek design with high-performance code to help your business stand out. Schedule a discovery call today.</h3>
-        </div>
 
-        <ContactForm />
+      <div className="banner-container">
+        <div className="banner-wrap" ref={ref}>
+          {/* Synchronized Background elements */}
+          <div className="banner-bg-overlay" />
+          <div className="banner-orb-1" />
+          <div className="banner-orb-2" />
+          
+          <div className="banner-grid">
+            <div className="banner-content">
+              <span className="banner-badge">Start Your Digital Journey</span>
+              <h2 className="banner-headline">
+                Ready to build<br />
+                <span>Something Great?</span>
+              </h2>
+              <p className="banner-sub">
+                Tell us about your project. We'll get back to you within 24 hours with a clear plan, timeline, and no-obligation quote.
+              </p>
+
+              <div className="banner-trust-bar">
+                {[
+                  'Response within 24 hours',
+                  'Free consultation call',
+                  'Post-launch support',
+                  'No hidden costs'
+                ].map((item) => (
+                  <div className="trust-item" key={item}>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2"/>
+                      <path d="M4.5 7.5l1.5 1.5 3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+              <Button
+                title="Book a Free Call"
+                onClick={() => window.open('https://calendly.com/thebluepeakstudio/30min', '_blank', 'noopener,noreferrer')}
+                className="hero-primary-btn"
+              />
+          </div>
+        </div>
       </div>
     </>
   )
 }
-
-export default Contact

@@ -20,7 +20,7 @@ const TrustCard = ({ title, description, image }) => {
         {/* ICON */}
         <img 
           src={image} 
-          alt="" 
+          alt={title}
           className="h-20 object-contain mb-8"
         />
 

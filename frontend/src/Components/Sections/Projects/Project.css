@@ -1,0 +1,240 @@
+/* Portfolio.css - Final Premium Light Version (16:9) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap');
+
+.port-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 1.5rem;
+    background: transparent; 
+}
+
+.port-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.port-badge {
+    font-family: 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    font-weight: 700;
+    color: #378add;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.port-headline {
+    font-family: 'azonix', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: #020617;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #5dcaa5 0%, #378add 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Filter Controls */
+.port-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.port-filter-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 22px;
+    border-radius: 100px;
+    border: 1px solid rgba(2, 6, 23, 0.08);
+    background: white;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.port-filter-btn.active {
+    background: #020617;
+    color: white;
+    border-color: #020617;
+    box-shadow: 0 10px 20px rgba(2, 6, 23, 0.15);
+}
+
+/* THE GRID: 3 columns Desktop, 2 columns Tablet/Phone */
+.port-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.port-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.port-card-inner {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(2, 6, 23, 0.05);
+    transition: all 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.port-card:hover .port-card-inner {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(2, 6, 23, 0.08);
+}
+
+/* Image Container - Updated to 16:9 Landscape */
+.port-image-container {
+    position: relative;
+    aspect-ratio: 16 / 9; 
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.port-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.port-card:hover .port-image-container img {
+    transform: scale(1.08);
+}
+
+/* Glassmorphism Hover Overlay */
+.port-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.port-card:hover .port-overlay {
+    opacity: 1;
+}
+
+.port-view-btn {
+    color: white;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 100px;
+}
+
+/* Content Area */
+.port-content {
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.port-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.port-category {
+    font-size: 10px;
+    font-weight: 700;
+    color: #378add;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.port-line {
+    height: 2px;
+    width: 30px;
+}
+
+.port-card-title {
+    font-family: 'azonix', sans-serif;
+    font-size: 1.15rem;
+    color: #020617;
+    margin-bottom: 0.5rem;
+}
+
+.port-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    color: #64748b;
+    line-height: 1.5;
+    font-size: 12px;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Tech Tags with Yellow-400 */
+.port-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.port-tag {
+    font-size: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: #020617;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background-color: #fbbf24; /* Tailwind Yellow-400 */
+}
+
+/* Responsive Logic */
+@media (max-width: 1024px) {
+    .port-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row for Tablets */
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .port-grid {
+        grid-template-columns: repeat(1, 1fr); /* 2 per row for Phones */
+        gap: 1rem;
+    }
+    .port-container {
+        padding: 4rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .port-card-title {
+        font-size: 1rem;
+    }
+    .port-tag {
+        font-size: 8px;
+        padding: 2px 8px;
+    }
+}

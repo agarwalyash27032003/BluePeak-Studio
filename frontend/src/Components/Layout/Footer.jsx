@@ -13,7 +13,7 @@ const Footer = () => {
         bluepeak
       </h1>
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10 dm-sans">
+      <div className="max-w-[1300px] mx-auto px-6 relative z-10 dm-sans">
 
         {/* TOP SECTION */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
@@ -132,6 +132,18 @@ const Footer = () => {
                     }`}
                 >
                   Instagram
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/bluepeakstudio/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`hover:text-white ${location.pathname === "/linkedin" ? "text-yellow-400" : ""
+                    }`}
+                >
+                  LinkedIn
                 </a>
               </li>
 

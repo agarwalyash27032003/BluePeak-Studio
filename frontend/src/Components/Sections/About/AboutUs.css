@@ -1,0 +1,215 @@
+/* AboutUs.css - BluePeak Studio Dark Editorial Version */
+
+.about-page {
+    /* background: #020617; */
+    /* Reverted to Dark Background */
+    color: #ffffff;
+    padding: 8rem 0;
+    overflow-x: hidden;
+}
+
+.about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Base Reveal Logic */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-hero {
+    margin-bottom: 8rem;
+}
+
+.about-headline {
+    font-family: 'azonix', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #ffffff;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #5dcaa5 0%, #378add 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.45);
+    max-width: 640px;
+    line-height: 1.6;
+}
+
+/* PROCESS SECTION: Sticky Layout */
+.process-container {
+    display: flex;
+    gap: 4rem;
+    padding: 8rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.process-sticky {
+    flex: 1;
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+
+.sticky-hl {
+    font-family: 'azonix', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1;
+    margin-top: 1.5rem;
+}
+
+.process-list {
+    flex: 1.5;
+}
+
+.process-item {
+    display: flex;
+    gap: 2.5rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 6rem;
+}
+
+.process-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.step-num {
+    font-family: 'azonix', sans-serif;
+    font-size: 1.5rem;
+    color: #fbbf24;
+    /* Yellow-400 Highlight */
+}
+
+.step-title {
+    font-family: 'azonix', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.step-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* LEAD ARCHITECT: Dark Box Design */
+.architect-box {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem;
+    border-radius: 32px;
+    align-items: center;
+    gap: 4rem;
+}
+
+.arch-visual {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #378add, #5dcaa5);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'azonix', sans-serif;
+    font-size: 4rem;
+    color: white;
+}
+
+.arch-name {
+    font-family: 'azonix', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.arch-bio {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.arch-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.arch-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #020617;
+    background-color: #fbbf24;
+    /* Yellow-400 */
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .process-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .process-sticky {
+        position: static;
+    }
+
+    .architect-box {
+        grid-template-columns: 1fr;
+        padding: 2.5rem;
+        text-align: center;
+    }
+
+    .arch-visual {
+        width: 140px;
+        margin: 0 auto;
+    }
+
+    .arch-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .process-item {
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .step-title {
+        font-size: 1.5rem;
+    }
+}
