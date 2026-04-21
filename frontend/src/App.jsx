@@ -6,6 +6,7 @@ import Projects from "./Pages/Projects";
 import Services from "./Pages/Services";
 import About from "./Pages/About";
 import Footer from "./Components/Layout/Footer";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Contact from "./Pages/Contact";
 import { Toaster } from "react-hot-toast";
 import ScrollTop from "./Components/UI/ScrollTop";
@@ -43,6 +44,7 @@ import TestimonialForm from "./Pages/TestimonialForm";
 // }
 
 function App() {
+  const isDesktop = window.innerWidth > 768;
   return (
     <div className="text-white min-h-screen bg-gradient-to-br from-[#050816] via-[#0f172a] to-[#1e3a8a]">
       <Toaster
@@ -56,7 +58,9 @@ function App() {
         }}
       />
       <ScrollTop />
-      <NeonCursor />
+
+      {isDesktop && <NeonCursor />}
+      
       <Header />
 
       <main>
@@ -67,6 +71,7 @@ function App() {
           <Route path="/about-us" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/testimonial" element={<TestimonialForm />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
 

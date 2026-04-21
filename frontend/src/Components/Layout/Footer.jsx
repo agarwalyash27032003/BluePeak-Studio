@@ -178,6 +178,7 @@ const Footer = () => {
 
 
         {/* BOTTOM BAR */}
+        {/* BOTTOM BAR */}
         <div className="mt-24 flex flex-col md:flex-row justify-between text-sm text-white/40 gap-4 items-center">
 
           <p>
@@ -185,12 +186,23 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-6">
-            <p className="hover:text-white cursor-pointer">
+            <NavLink
+              to="/privacy-policy"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-400" : "hover:text-white transition-colors"
+              }
+            >
               Privacy Policy
-            </p>
-            <p className="hover:text-white cursor-pointer">
+            </NavLink>
+
+            {/* <NavLink
+              to="/terms-and-conditions"
+              className={({ isActive }) =>
+                isActive ? "text-yellow-400" : "hover:text-white transition-colors"
+              }
+            >
               Terms & Conditions
-            </p>
+            </NavLink> */}
           </div>
 
         </div>

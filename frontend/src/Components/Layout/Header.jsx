@@ -20,7 +20,7 @@ const Header = () => {
       {/* NAVBAR */}
       <div
         className="
-        w-[75px] md:w-[80%] lg:w-[60%]  max-w-[1200px]
+        w-[75px] md:w-[83%] lg:w-[60%]  max-w-[1200px]
         flex items-center justify-between
         py-4 px-6 my-4
         rounded-full flex
