@@ -41,10 +41,9 @@ export default function Contact() {
 
               <div className="banner-trust-bar">
                 {[
-                  'Response within 24 hours',
                   'Free consultation call',
-                  'Post-launch support',
-                  'No hidden costs'
+                  '15 Days Free of Cost support',
+                  'No hidden charges'
                 ].map((item) => (
                   <div className="trust-item" key={item}>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

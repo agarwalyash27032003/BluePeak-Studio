@@ -4,7 +4,6 @@ const ContactForm = require("../models/contactform");
 
 module.exports.createContactForm = async (req, res) => {
   try {
-    console.log("Incoming:", req.body);
 
     const { name, contactNo, email, message } = req.body;
 
@@ -31,7 +30,7 @@ module.exports.createContactForm = async (req, res) => {
     });
 
   } catch (err) {
-    console.error("❌ ERROR:", err);
+    console.error("Error in Contact Form Controller:", err);
 
     res.status(500).json({
       success: false,

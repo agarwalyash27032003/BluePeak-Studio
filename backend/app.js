@@ -43,6 +43,9 @@ mongoose.connect(process.env.MONGO_URL)
 const contactFormRoute = require("./routes/contactForm.routes");
 app.use("/api/contact", contactFormRoute);
 
+const testimonialRoute = require("./routes/testimonialForm.routes");
+app.use("/api/testimonial", testimonialRoute)
+
 // ✅ 404 handler (VERY IMPORTANT)
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });

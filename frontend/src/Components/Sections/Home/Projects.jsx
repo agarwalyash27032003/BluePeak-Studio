@@ -4,10 +4,10 @@ import SectionHeader from "../../UI/SectionHeader"
 import './Projects.css'
 
 const projects = [
-  { id: 1, title: "Chikoo Constructions", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-21%20003541.png", link: "https://chikoo-constructions.vercel.app/" },
+  { id: 1, title: "Chikoo Constructions", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-04-24%20223201.png", link: "https://chikooconstructions.com/" },
   { id: 2, title: "Tvastih Studio", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221051.png", link: "https://agarwalyash2703.wixsite.com/tvastih" },
   { id: 3, title: "WanderLust", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221731.png", link: "https://wanderlust-1k0r.onrender.com/listings" },
-  { id: 4, title: "Glass Studio Siliguri", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221510.png", link: "https://zolomedia.wixsite.com/glass-decor" },
+  { id: 4, title: "MR Corrugators", image: "https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-04-24%20222727.png", link: "https://zolomedia.wixsite.com/glass-decor" },
 ]
 
 export default function Projects() {

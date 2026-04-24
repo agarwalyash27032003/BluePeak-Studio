@@ -8,9 +8,9 @@ const projects = [
     desc: 'A high-performance corporate portal for a premier construction firm, featuring interactive project galleries and optimized lead generation flows.',
     tags: ['React', 'Node.js', 'MongoDB'],
     color: '#378ADD',
-    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-21%20003541.png?updatedAt=1774033590358',
-    link: '#',
-    size: 'large' // Used for layout variation
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-04-24%20223201.png',
+    link: 'https://www.chikooconstructions.com/',
+    size: 'large'
   },
   {
     title: 'WanderLust',
@@ -33,18 +33,18 @@ const projects = [
     size: 'small'
   },
   {
-    title: 'Glass Studio Slg',
-    category: 'Landing Page',
-    desc: 'Art-directed digital experience for a premium photography collective.',
-    tags: ['Wix'],
+    title: 'MR Corrugators',
+    category: 'Manufacturing',
+    desc: 'Packaging manufacturers of high-quality packaging solutions.',
+    tags: ['JavaScript', 'React.js', 'Express.js', 'REST APIs', 'Node.js', 'MySQL'],
     color: '#EF9F27',
-    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-03-11%20221510.png?updatedAt=1774033524897',
-    link: '#',
+    img: 'https://ik.imagekit.io/bluepeakstudio/BluePeak%20Studio/Screenshot%202026-04-24%20222727.png',
+    link: 'https://mr-corrugators.vercel.app/',
     size: 'small'
   },
 ]
 
-const filters = ['All', 'E-Commerce', 'Real Estate', 'Landing Page', 'Web App']
+const filters = ['All', 'E-Commerce', 'Real Estate', 'Landing Page', 'Web App', 'Manufacturing']
 
 export default function WebProjectSection() {
   const [active, setActive] = useState('All')
