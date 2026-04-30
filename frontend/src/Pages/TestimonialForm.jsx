@@ -37,7 +37,11 @@ const TestimonialForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.companyName,
+          role: formData.role,
+          message: formData.testimonial,
+        }),
       });
 
       const data = await res.json();
