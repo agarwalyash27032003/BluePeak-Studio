@@ -8,7 +8,7 @@ const TestimonialForm = () => {
   const [formData, setFormData] = useState({
     companyName: "",
     testimonial: "",
-    rating: 0,
+    rating: 5,
   });
 
   const [hover, setHover] = useState(0);
@@ -101,7 +101,7 @@ const TestimonialForm = () => {
           <div>
             <h2 className="text-sm sm:text-base mb-2">Rating</h2>
 
-            <div className="flex gap-2 text-2xl cursor-pointer">
+            <div className="flex gap-3 text-3xl sm:text-4xl cursor-pointer">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
