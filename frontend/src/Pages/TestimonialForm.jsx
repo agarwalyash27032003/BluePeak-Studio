@@ -7,10 +7,11 @@ const TestimonialForm = () => {
 
   const [formData, setFormData] = useState({
     companyName: "",
-    role: "",
     testimonial: "",
+    rating: 0,
   });
 
+  const [hover, setHover] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const handleChange = useCallback((e) => {
@@ -24,7 +25,7 @@ const TestimonialForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.companyName || !formData.role || !formData.testimonial) {
+    if (!formData.companyName || !formData.testimonial || !formData.rating) {
       toast.error("Please fill all fields ❗");
       return;
     }
@@ -39,7 +40,7 @@ const TestimonialForm = () => {
         },
         body: JSON.stringify({
           name: formData.companyName,
-          role: formData.role,
+          rating: formData.rating,
           message: formData.testimonial,
         }),
       });
@@ -51,8 +52,8 @@ const TestimonialForm = () => {
 
         setFormData({
           companyName: "",
-          role: "",
           testimonial: "",
+          rating: 0,
         });
       } else {
         toast.error(data.message || "Something went wrong!");
@@ -67,27 +68,23 @@ const TestimonialForm = () => {
   return (
     <section className="mt-24 sm:mt-28 md:mt-32 px-4 sm:px-6 lg:px-10 lg:mx-16">
 
-      {/* 🔥 SECTION HEADING (Premium Feel) */}
+      {/* Heading */}
       <div className="text-center mb-10 sm:mb-14">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
           Share Your Experience
         </h1>
         <p className="text-gray-400 mt-3 text-sm sm:text-base max-w-xl mx-auto">
-          Your feedback helps us build better digital experiences and grow together.
+          Your feedback helps us build better digital experiences.
         </p>
-
-        {/* subtle glow line */}
         <div className="w-24 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full opacity-70"></div>
       </div>
 
-      {/* 🔥 FORM CARD */}
+      {/* Form */}
       <div className="w-[80%] sm:w-[65%] lg:w-[50%] mx-auto py-8 sm:py-10 px-4 sm:px-6 lg:px-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl">
 
-        <form
-          onSubmit={handleSubmit}
-          className="contact-us-form flex flex-col gap-4 sm:gap-5 dm-sans"
-        >
+        <form onSubmit={handleSubmit} className="contact-us-form flex flex-col gap-5 dm-sans">
 
+          {/* Name */}
           <div>
             <h2 className="text-sm sm:text-base mb-1">Company Name</h2>
             <input
@@ -100,18 +97,32 @@ const TestimonialForm = () => {
             />
           </div>
 
+          {/* ⭐ Rating */}
           <div>
-            <h2 className="text-sm sm:text-base mb-1">Role in Company</h2>
-            <input
-              type="text"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              required
-              className="w-full"
-            />
+            <h2 className="text-sm sm:text-base mb-2">Rating</h2>
+
+            <div className="flex gap-2 text-2xl cursor-pointer">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  onClick={() =>
+                    setFormData({ ...formData, rating: star })
+                  }
+                  onMouseEnter={() => setHover(star)}
+                  onMouseLeave={() => setHover(0)}
+                  className={`transition ${
+                    (hover || formData.rating) >= star
+                      ? "text-yellow-400"
+                      : "text-gray-500"
+                  }`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
           </div>
 
+          {/* Message */}
           <div>
             <h2 className="text-sm sm:text-base mb-1">Testimonial</h2>
             <textarea
@@ -124,8 +135,8 @@ const TestimonialForm = () => {
             ></textarea>
           </div>
 
-          {/* BUTTON */}
-          <div className="w-full sm:w-[60%] md:w-[50%] mx-auto flex justify-center items-center mt-2">
+          {/* Button */}
+          <div className="w-full sm:w-[60%] md:w-[50%] mx-auto flex justify-center">
             <Button
               type="submit"
               disabled={loading}
