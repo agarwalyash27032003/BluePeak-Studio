@@ -1,57 +1,65 @@
-// app.js
-
 require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const connectDB = require("./config/db");
+const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// ✅ Middleware
 const allowedOrigins = [
   "https://bluepeak-studio-frontend.onrender.com",
-  "https://bluepeakstudio.in"
+  "https://bluepeakstudio.in",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST"],
-}));
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Test route
 app.get("/", (req, res) => {
-  res.send("Backend running 🚀");
+  res.send("Backend running");
 });
 
-// ✅ DB Connection
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+connectDB().catch((err) => {
+  console.error("MongoDB connection failed:", err.message);
+  if (err.message?.includes("querySrv") || err.code === "ECONNREFUSED") {
+    console.error(
+      "Tip: Use the standard mongodb:// connection string from Atlas (not mongodb+srv://). See backend/.env.example"
+    );
+  }
+});
 
-// ✅ Routes
 const contactFormRoute = require("./routes/contactForm.routes");
 app.use("/api/contact", contactFormRoute);
 
 const testimonialRoute = require("./routes/testimonialForm.routes");
-app.use("/api/testimonial", testimonialRoute)
+app.use("/api/testimonial", testimonialRoute);
 
-// ✅ 404 handler (VERY IMPORTANT)
+const adminRoutes = require("./routes/admin");
+app.use("/api/admin", adminRoutes);
+
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
-// ✅ Start server
+app.use(errorHandler);
+
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });

@@ -1,0 +1,34 @@
+/* Restore system cursor in admin (overrides any global custom cursor styles) */
+.admin-panel,
+.admin-panel * {
+  cursor: auto;
+}
+
+.admin-panel button,
+.admin-panel a,
+.admin-panel [role="button"],
+.admin-panel label[for],
+.admin-panel select,
+.admin-panel summary,
+.admin-panel input[type="checkbox"],
+.admin-panel input[type="radio"],
+.admin-panel input[type="file"],
+.admin-panel .cursor-pointer {
+  cursor: pointer;
+}
+
+.admin-panel input:disabled,
+.admin-panel button:disabled,
+.admin-panel select:disabled {
+  cursor: not-allowed;
+}
+
+.admin-panel input[type="text"],
+.admin-panel input[type="email"],
+.admin-panel input[type="password"],
+.admin-panel input[type="number"],
+.admin-panel input[type="date"],
+.admin-panel input[type="search"],
+.admin-panel textarea {
+  cursor: text;
+}

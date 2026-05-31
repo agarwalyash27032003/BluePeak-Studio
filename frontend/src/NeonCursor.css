@@ -1,5 +1,6 @@
-/* hide default cursor */
-* {
+/* hide default cursor on public site only (scoped — admin keeps normal cursor) */
+.public-site,
+.public-site * {
   cursor: none;
 }
 

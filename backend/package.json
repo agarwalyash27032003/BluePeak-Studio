@@ -1,9 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "BluePeak Studio API",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed:admin": "node utils/seedAdmin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,10 +14,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.6.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^9.3.1",
+    "multer": "^1.4.5-lts.2",
     "nodemon": "^3.1.14"
   }
 }

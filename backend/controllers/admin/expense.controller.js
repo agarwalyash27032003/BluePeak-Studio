@@ -1,0 +1,125 @@
+const Expense = require("../../models/Expense");
+const ApiError = require("../../utils/ApiError");
+const asyncHandler = require("../../utils/asyncHandler");
+const { uploadToCloudinary, deleteFromCloudinary } = require("../../utils/uploadToCloudinary");
+
+const buildFilter = (query) => {
+  const filter = {};
+  if (query.category) filter.category = query.category;
+  if (query.paidVia) filter.paidVia = query.paidVia;
+  if (query.search) filter.title = { $regex: query.search, $options: "i" };
+  if (query.startDate || query.endDate) {
+    filter.expenseDate = {};
+    if (query.startDate) filter.expenseDate.$gte = new Date(query.startDate);
+    if (query.endDate) filter.expenseDate.$lte = new Date(query.endDate);
+  }
+  if (query.month && query.year) {
+    const start = new Date(query.year, query.month - 1, 1);
+    const end = new Date(query.year, query.month, 0, 23, 59, 59);
+    filter.expenseDate = { $gte: start, $lte: end };
+  }
+  return filter;
+};
+
+const getExpenses = asyncHandler(async (req, res) => {
+  const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+  const limit = Math.min(50, parseInt(req.query.limit, 10) || 10);
+  const skip = (page - 1) * limit;
+  const filter = buildFilter(req.query);
+
+  const [expenses, total] = await Promise.all([
+    Expense.find(filter).sort({ expenseDate: -1 }).skip(skip).limit(limit),
+    Expense.countDocuments(filter),
+  ]);
+
+  res.json({
+    success: true,
+    data: expenses,
+    pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+  });
+});
+
+const getExpenseSummary = asyncHandler(async (req, res) => {
+  const month = parseInt(req.query.month, 10) || new Date().getMonth() + 1;
+  const year = parseInt(req.query.year, 10) || new Date().getFullYear();
+  const start = new Date(year, month - 1, 1);
+  const end = new Date(year, month, 0, 23, 59, 59);
+
+  const [monthlyTotal, byCategory] = await Promise.all([
+    Expense.aggregate([
+      { $match: { expenseDate: { $gte: start, $lte: end } } },
+      { $group: { _id: null, total: { $sum: "$amount" } } },
+    ]),
+    Expense.aggregate([
+      { $match: { expenseDate: { $gte: start, $lte: end } } },
+      { $group: { _id: "$category", total: { $sum: "$amount" }, count: { $sum: 1 } } },
+      { $sort: { total: -1 } },
+    ]),
+  ]);
+
+  res.json({
+    success: true,
+    data: {
+      month,
+      year,
+      total: monthlyTotal[0]?.total || 0,
+      byCategory,
+    },
+  });
+});
+
+const getExpense = asyncHandler(async (req, res) => {
+  const expense = await Expense.findById(req.params.id);
+  if (!expense) throw new ApiError(404, "Expense not found");
+  res.json({ success: true, data: expense });
+});
+
+const createExpense = asyncHandler(async (req, res) => {
+  const body = { ...req.body };
+  if (req.file) {
+    const result = await uploadToCloudinary(req.file.buffer, "bluepeak/receipts");
+    body.receiptUrl = result.secure_url;
+    body.receiptPublicId = result.public_id;
+  }
+  const expense = await Expense.create(body);
+  res.status(201).json({ success: true, data: expense });
+});
+
+const updateExpense = asyncHandler(async (req, res) => {
+  const existing = await Expense.findById(req.params.id);
+  if (!existing) throw new ApiError(404, "Expense not found");
+
+  const body = { ...req.body };
+  if (req.file) {
+    if (existing.receiptPublicId) await deleteFromCloudinary(existing.receiptPublicId);
+    const result = await uploadToCloudinary(req.file.buffer, "bluepeak/receipts");
+    body.receiptUrl = result.secure_url;
+    body.receiptPublicId = result.public_id;
+  }
+
+  const expense = await Expense.findByIdAndUpdate(req.params.id, body, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.json({ success: true, data: expense });
+});
+
+const deleteExpense = asyncHandler(async (req, res) => {
+  const expense = await Expense.findById(req.params.id);
+  if (!expense) throw new ApiError(404, "Expense not found");
+
+  if (expense.receiptPublicId) await deleteFromCloudinary(expense.receiptPublicId);
+  await Expense.findByIdAndDelete(req.params.id);
+
+  res.json({ success: true, message: "Expense deleted" });
+});
+
+module.exports = {
+  getExpenses,
+  getExpense,
+  getExpenseSummary,
+  createExpense,
+  updateExpense,
+  deleteExpense,
+};

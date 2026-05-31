@@ -1,0 +1,33 @@
+const mongoose = require("mongoose");
+
+const DOCUMENT_CATEGORIES = [
+  "Onboarding Documents",
+  "Contracts",
+  "Payment Plans",
+  "Invoices",
+  "Brand Assets",
+  "Offboarding Documents",
+  "Deliverables",
+  "Other Attachments",
+];
+
+const documentSchema = new mongoose.Schema(
+  {
+    projectId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project",
+      required: true,
+    },
+    fileName: { type: String, required: true },
+    fileUrl: { type: String, required: true },
+    publicId: { type: String },
+    category: { type: String, enum: DOCUMENT_CATEGORIES, required: true },
+    uploadedBy: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
+documentSchema.index({ projectId: 1, category: 1 });
+
+module.exports = mongoose.model("Document", documentSchema);
+module.exports.DOCUMENT_CATEGORIES = DOCUMENT_CATEGORIES;

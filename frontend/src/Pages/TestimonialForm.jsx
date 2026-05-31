@@ -8,7 +8,7 @@ const TestimonialForm = () => {
   const [formData, setFormData] = useState({
     companyName: "",
     testimonial: "",
-    rating: 5,
+    rating: 5   `~11111111111111111111111111111`,
   });
 
   const [hover, setHover] = useState(0);
